@@ -15,12 +15,28 @@ public abstract class Nivel {
         return cam;
     }
 
-    public Personaje getCharlie() {
-        return charlie;
+    public void moverDerCharlie(){
+        charlie.right();
+    }
+    
+    public void moverIzqCharlie(){
+        charlie.left();
+    }
+    
+    public void saltarCharlie(){
+        charlie.jump();
     }
 
-    public void setCharlie(Personaje charlie) {
-        this.charlie = charlie;
+    public void saltarFinCharlie(){
+        charlie.jumpEnd();
+    }
+
+    public void updateCharlie(double delta){
+        charlie.update(delta);
+    }
+
+    public Personaje getCharlie() {
+        return charlie;
     }
 
     public void setObstaculos(Obstaculo obstaculos) {

@@ -56,6 +56,13 @@ public abstract class ObjetoGrafico {
         }  
     }
 
+    public void display(Graphics2D g,int width, int height) {
+        for(int i = 0; i < i * width; i++){
+            g.drawImage(sprite.getSubimage(i * width, 0, width, height), (int) this.getX(), (int) this.getY(), null);
+        }
+        
+    }
+
     public void display(Graphics2D g) {
         g.drawImage(sprite, (int) this.getX(), (int) this.getY(), null);
     }

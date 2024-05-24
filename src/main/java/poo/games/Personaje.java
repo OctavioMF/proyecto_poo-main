@@ -44,7 +44,7 @@ public class Personaje extends ObjetoGrafico {
 		}
 	}
 
-	public void quieto() {
+	public void quieto(){
 		estadoActual = ESTADO_QUIETO;
 	}
 
@@ -57,7 +57,7 @@ public class Personaje extends ObjetoGrafico {
 	}
 
 	public void right() {
-		if(estadoActual != ESTADO_SALTANDO) {
+		if(estadoActual != ESTADO_SALTANDO){
 			velocityX = 4.0;
 			estadoActual = ESTADO_CAMINANDO;
 			direccionActual = DIRECCION_DERECHA;
@@ -94,7 +94,7 @@ public class Personaje extends ObjetoGrafico {
             this.setY(POSICION_Y_PISO);
             velocityY = 0.0;
             onGround = true;
-			estadoActual = ESTADO_QUIETO;
+			quieto();
 		}
 
 		getColision().setLocation((int)getX() + 15, (int)getY() + 15);
@@ -102,6 +102,6 @@ public class Personaje extends ObjetoGrafico {
 	}
 
 	 public void display(Graphics2D g2) {
-		g2.drawImage(sprite,(int) this.getX(),(int) this.getY(),null);
+		display(g2,40, 60);
 	}
 }
