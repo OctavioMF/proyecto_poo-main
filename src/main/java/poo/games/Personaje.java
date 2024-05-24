@@ -1,17 +1,7 @@
 package poo.games;
 
 import java.awt.*;
-import java.awt.geom.*;
 
-import java.awt.image.*;
-import javax.imageio.*;
-import java.io.*;
-import java.net.*; //nuevo para sonido
-
-
-//import processing.core.*;
-///   http://jsfiddle.net/LyM87/
-/// https://stackoverflow.com/questions/37758061/rotate-a-buffered-image-in-java/37758533
 public class Personaje extends ObjetoGrafico {
 
 	private boolean onGround = false;
@@ -27,19 +17,15 @@ public class Personaje extends ObjetoGrafico {
 	int estadoActual;
 	double tempVelocity;
 
-
 	protected double velocityX = 4.0;
 	protected double velocityY = 0.0;
 	protected double gravity = 0.5;
-	protected double angulo=0.0;
 
-	protected int direccionAngulo= 1;
-
-	public final int POSICION_Y_PISO=335;
+	public final int POSICION_Y_PISO=355;
 
 	public Personaje(String filename){
-
 		super(filename);
+		setColision(new Rectangle((int)getX()+15, (int)getY()+15, getSprite().getWidth()-15, getSprite().getHeight()-15));
 	}
 
 	public void jump() {
@@ -68,7 +54,6 @@ public class Personaje extends ObjetoGrafico {
 			estadoActual = ESTADO_CAMINANDO;
 			direccionActual = DIRECCION_IZQUIERDA;
 		}
-//		this.setX(punto.getX() + velocityX);
 	}
 
 	public void right() {
@@ -77,7 +62,6 @@ public class Personaje extends ObjetoGrafico {
 			estadoActual = ESTADO_CAMINANDO;
 			direccionActual = DIRECCION_DERECHA;
 		}
-//		this.setX(punto.getX() + velocityX);
 	}
 
 	public void update(double delta) {
@@ -91,9 +75,6 @@ public class Personaje extends ObjetoGrafico {
 			this.setY(this.getY() + velocityY);
 			this.setX(this.getX() + tempVelocity);
 		}
-
-//		this.setX(this.getX()velocityX); += ;
-//		positionY += velocityY;
 
 		Mundo m = Mundo.getInstance();
 
@@ -115,10 +96,9 @@ public class Personaje extends ObjetoGrafico {
             onGround = true;
 			estadoActual = ESTADO_QUIETO;
 		}
-	}
 
-	private void rotarImagenGrados(double ang){
-			angulo +=ang;
+		getColision().setLocation((int)getX() + 15, (int)getY() + 15);
+
 	}
 
 	 public void display(Graphics2D g2) {

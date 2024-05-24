@@ -3,11 +3,13 @@ package poo.games.circus_charlie;
 import poo.games.*;
 
 import java.awt.*;
+import java.util.*;
 
 public abstract class Nivel {
     private Fondo fondo;
     private Personaje charlie;
     private Camara cam;
+    private ArrayList<Obstaculo> obstaculos = new ArrayList<Obstaculo>();
 
     public Camara getCam() {
         return cam;
@@ -21,9 +23,17 @@ public abstract class Nivel {
         this.charlie = charlie;
     }
 
+    public void setObstaculos(Obstaculo obstaculos) {
+        this.obstaculos.add(obstaculos);
+    }
+
+    public ArrayList<Obstaculo> getObstaculos() {
+        return obstaculos;
+    }
+
     Nivel() {
         Mundo m = Mundo.getInstance();
-        this.charlie= new Personaje("imagenes/Caldero.png");
+        this.charlie= new Personaje("imagenes/ImagenCharlieEstatica.png");
         this.charlie.setX(300);
         this.charlie.setY(360);
         this.charlie.quieto();
